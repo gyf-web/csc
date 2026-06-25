@@ -1,0 +1,4 @@
+class_id,class_name,area_km2,percentage_of_forest
+0,non_forest_or_uncertain,9216.928261,
+1,natural_forest,13814.013707,56.204348
+2,plantation_forest,10764.180381,43.795652

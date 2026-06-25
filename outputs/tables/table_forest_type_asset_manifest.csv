@@ -1,0 +1,3 @@
+asset_name,asset_id,description,scale,crs,export_status,notes
+ForestType_30m_clean,users/gyf/forest_csc_alphaearth/stage01_forest_type/ForestType_30m_clean,"Canonical natural/planted forest type map; 0 non-forest/uncertain, 1 natural, 2 plantation.",30,EPSG:4326,submitted,"Submitted task IDs: XK6G7DC7R2NCCK6TMCLBLIN7, DQKVVJV7LXDXPBSBZFJ2R6OV. Check Earth Engine Tasks for final completion."
+ForestMask_30m,users/gyf/forest_csc_alphaearth/stage01_forest_type/ForestMask_30m,"Forest analysis mask derived from cleaned forest type; 1 forest, 0 other.",30,EPSG:4326,submitted,"Submitted task IDs: XK6G7DC7R2NCCK6TMCLBLIN7, DQKVVJV7LXDXPBSBZFJ2R6OV. Check Earth Engine Tasks for final completion."

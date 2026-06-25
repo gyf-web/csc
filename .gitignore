@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+conda/
+*.egg-info/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+cache/
+outputs/**/*.tmp
+.matplotlib/
+.uv-cache/
+
+# Local dependency caches
+.deps/
+
+# Large raster and remote sensing files
+*.tif
+*.tiff
+*.vrt
+*.aux.xml
+*.ovr
+*.hdf
+*.h5
+*.nc
+*.zip
+*.7z
+*.rar
+
+# Credentials and secrets
+.env
+.env.*
+*.pem
+*.key
+credentials/
+token.json
+earthengine_credentials
+service-account*.json
+gee-key*.json
+*credential*.json
+*secret*.json
+
+# Earth Engine / cloud auth cache
+.config/earthengine/
+
+# Local-only project data and literature caches
+NF/
+文献调研/

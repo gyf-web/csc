@@ -1,0 +1,29 @@
+project:
+  name: hainan_forest_greening_quality
+  crs: EPSG:4326
+  target_scale: 30
+  start_year: 2000
+  end_year: 2024
+  structure_start_year: 2019
+  structure_end_year: 2024
+
+paths:
+  data_raw: data/raw
+  data_interim: data/interim
+  data_processed: data/processed
+  outputs: outputs
+  figures: outputs/figures
+  tables: outputs/tables
+
+gee_assets:
+  hainan_roi: projects/ee-gyf/assets/hainan
+  forest_type_asset: null
+  rubber_mask_asset: null
+
+analysis:
+  fvc_ndvi_soil_percentile: 5
+  fvc_ndvi_veg_percentile: 95
+  trend_pvalue_threshold: 0.05
+  random_seed: 2026
+  spatial_block_km: 20
+  cv_folds: 5
