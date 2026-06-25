@@ -44,6 +44,9 @@ outputs/**/*.tmp
 *.7z
 *.rar
 
+# Local config
+config/local_config.yaml
+
 # Credentials and secrets
 .env
 .env.*

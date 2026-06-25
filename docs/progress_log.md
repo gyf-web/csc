@@ -53,3 +53,42 @@ Next stage: After all Stage 2 Earth Engine export tasks complete successfully, p
   - `outputs/tables/table_landsat_asset_manifest.csv` is present and reviewed
 - explicit_pause: Do not execute Stage 3 or any later stage during this handoff. Do not submit new Earth Engine tasks, cancel existing Stage 2 tasks, download full-resolution GeoTIFFs, or generate local Landsat composites.
 - handoff_note: See `docs/handoff_note.md` for the year-by-year task table, Asset status table, Git sync notes, ignored local files, and laptop recovery prompt.
+
+## Environment setup - csc conda environment
+
+Status: completed  
+Date: 2026-06-25  
+Inputs: `AGENTS.md`; existing Anaconda installation at `D:\Annaconda3`; existing geemap-capable `GEE` environment; Earth Engine Cloud Project `ee-gyf`.  
+Outputs: Conda environment `csc` created at `D:\Annaconda3\envs\csc`; no remote sensing outputs, rasters, notebooks, or temporary project-root scripts were generated.  
+Checks: `conda info --envs` lists `csc`; `D:\Annaconda3\envs\csc\python.exe -s` imports all checked project packages successfully: `ee`, `geemap`, `geopandas`, `rasterio`, `rioxarray`, `xarray`, `numpy`, `pandas`, `scipy`, `sklearn`, `statsmodels`, `matplotlib`, `seaborn`, `yaml`, `tqdm`, `joblib`, `pyarrow`, `openpyxl`, `folium`, `shapely`, `pyproj`, `fiona`, `pyogrio`, `geedim`, `cartopy`, `pymannkendall`, `semopy`, and `python-box`; key installed versions include `earthengine-api 1.6.15`, `geemap 0.36.6`, `pyogrio 0.11.1`, `pymannkendall 1.4.3`, and `semopy 2.3.11`; `geemap.ee_initialize(project="ee-gyf")` succeeded; `ee.data.getAssetRoots()` returned 52 roots; `ee.FeatureCollection("projects/ee-gyf/assets/hainan").size().getInfo()` returned 137.  
+Problems: The first from-scratch conda solve timed out, so the existing verified `GEE` environment was cloned to `csc` and then upgraded in place. Base Anaconda required a temporary `PATH` fix for `D:\Annaconda3\Library\bin` so SSL could load. Pip reports a lingering warning for an invalid `-ython-box` distribution metadata entry, but `import box` succeeds and `python-box 7.3.2` is installed inside `csc`. Some pre-existing optional package dependency warnings remain from the cloned broad geospatial environment; the required project imports and GEE initialization passed.  
+Next stage: Keep Stage 2 paused until all Stage 2 Earth Engine export tasks complete; use `conda activate csc` or `D:\Annaconda3\envs\csc\python.exe` for future project commands.
+
+## Stage 3 - NDVI, FVC, and NIRv calculation
+
+Status: completed  
+Date: 2026-06-25  
+Inputs: `config/config.yaml`; Earth Engine Cloud Project `ee-gyf`; corrected Hainan boundary asset `projects/ee-gyf/assets/Hainan-Island-Boundary`; Stage 1 assets `users/gyf/forest_csc_alphaearth/stage01_forest_type/ForestMask_30m` and `users/gyf/forest_csc_alphaearth/stage01_forest_type/ForestType_30m_clean`; Stage 2 assets `users/gyf/forest_csc_alphaearth/stage02_landsat/LandsatComposite_2000` through `users/gyf/forest_csc_alphaearth/stage02_landsat/LandsatComposite_2024`.  
+Outputs: Created `gee/stage03_export_indices.py`; generated `outputs/tables/table_fvc_thresholds.csv`; generated `outputs/tables/table_annual_fvc_nirv_stats.csv`; generated `outputs/tables/table_stage03_indices_asset_manifest.csv`; generated `outputs/figures/fig02_annual_fvc_nirv_timeseries.png`; submitted annual NDVI, FVC, and NIRv exports to `users/gyf/forest_csc_alphaearth/stage03_indices/`.  
+Checks: Earth Engine initialized successfully with project `ee-gyf`; Stage 1 ForestMask and ForestType assets, the Stage 2 Landsat asset folder, and the Stage 3 output Asset folder were accessible; all 25 Stage 2 LandsatComposite image assets from 2000-2024 exist and contain the required six bands `Blue`, `Green`, `Red`, `NIR`, `SWIR1`, and `SWIR2`; unified FVC thresholds were computed from Earth Engine fixed histograms over all 2000-2024 forest pixels, with NDVI_soil 0.494750, NDVI_veg 0.872750, and histogram count 726,415,224; the annual statistics table has 75 rows for 25 years and three forest groups (`all_forest`, `natural_forest`, `plantation_forest`); table-level checks found mean NDVI range 0.584897-0.831641, mean FVC range 0.298411-0.885637, and mean NIRv range 0.150265-0.266127; the Asset manifest has 75 submitted rows for NDVI, FVC, and NIRv; latest task status check found 2 RUNNING, 73 READY, and 0 FAILED Stage 3 export tasks; `gee/stage03_export_indices.py` passed `py_compile`; local `outputs/` contains no `.tif` or `.tiff` files.  
+Problems: The configured `gee_assets.hainan_roi` still points to the unsuitable `projects/ee-gyf/assets/hainan`, so this run used the corrected Hainan boundary override already documented in prior stages. Earth Engine exports are asynchronous; at the latest check, Stage 3 index Asset exports had been submitted but had not yet materialized as IMAGE assets. A pandas optional dependency warning reported `numexpr` below the preferred pandas version, but the CSV and figure outputs were written successfully.  
+Next stage: Do not proceed to Stage 4 until all Stage 3 Earth Engine export tasks complete successfully and `NDVI_2000-2024`, `FVC_2000-2024`, and `NIRv_2000-2024` exist under `users/gyf/forest_csc_alphaearth/stage03_indices/`.
+
+## Handoff update: Stage 3 paused
+
+- time: 2026-06-25 22:12:00 +08:00
+- current_stage: Stage 3 NDVI/FVC/NIRv
+- status: GEE export tasks submitted, not all completed
+- task_status_summary: 7 COMPLETED, 2 RUNNING, 66 READY, 0 FAILED, 0 CANCELLED
+- asset_status_summary: 7 target assets exist as IMAGE, 68 target assets remain export_pending
+- failed_tasks: none found in the latest check
+- next_action: check Stage 3 GEE task completion and Asset availability before Stage 4
+- do_not_run_next_stage_until:
+  - NDVI_2000-2024 all exist as GEE Assets
+  - FVC_2000-2024 all exist as GEE Assets
+  - NIRv_2000-2024 all exist as GEE Assets
+  - `outputs/tables/table_fvc_thresholds.csv` is complete
+  - `outputs/tables/table_annual_fvc_nirv_stats.csv` is complete
+  - `outputs/tables/table_stage03_indices_asset_manifest.csv` is updated
+- explicit_pause: Do not execute Stage 4 or any later stage during this handoff. Do not submit new Earth Engine tasks, cancel existing Stage 3 tasks, rerun Stage 3, download full-resolution GeoTIFFs, or delete existing results.
+- handoff_note: See `docs/handoff_note.md` for the year-by-year Stage 3 task table, target Asset status table, local output checks, Git sync notes, ignored local files, and office-computer recovery prompt.

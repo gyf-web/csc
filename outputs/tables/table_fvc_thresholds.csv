@@ -1,0 +1,2 @@
+ndvi_soil_percentile,ndvi_veg_percentile,ndvi_soil_value,ndvi_veg_value,method,sample_or_histogram_count
+5,95,0.49475,0.87275,"Earth Engine fixedHistogram -1 to 1 with 4000 bins, combined across 2000-2024 forest pixels",726415224
