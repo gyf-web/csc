@@ -1,0 +1,2 @@
+R2,RMSE,MAE,Bias,sample_count,model_type,simplified_model
+0.77283639,0.03034619,0.02316444,0.0,500000,unified_residual_model,False

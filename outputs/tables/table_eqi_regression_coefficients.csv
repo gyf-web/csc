@@ -1,0 +1,7 @@
+term,coefficient,std_error,t_value,p_value,model_type
+Intercept,0.09412783499,0.00156468003,60.157881,0.0,unified_residual_model
+FVC,0.207347648675,0.000169325346,1224.551753,0.0,unified_residual_model
+DEM,-5.6633975e-05,2.96215e-07,-191.192285,0.0,unified_residual_model
+Slope,-7.1600707e-05,6.46646e-06,-11.072628,0.0,unified_residual_model
+Precip,-0.001811573899,0.000173205627,-10.459094,0.0,unified_residual_model
+Temp,0.000186252721,5.8704326e-05,3.172726,0.001510242789,unified_residual_model

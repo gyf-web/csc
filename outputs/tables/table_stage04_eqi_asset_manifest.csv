@@ -1,0 +1,26 @@
+year,asset_id,export_description,export_status,scale,crs,model_type,simplified_model,notes
+2000,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2000,EQI_func_2000,existing_asset,30,EPSG:4326,unified_residual_model,False,Asset already exists; export was not resubmitted.
+2001,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2001,EQI_func_2001,existing_task_running,30,EPSG:4326,unified_residual_model,False,Existing task ID: DSSIAJWED6LJ5SWSKHIEA7M2
+2002,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2002,EQI_func_2002,existing_task_running,30,EPSG:4326,unified_residual_model,False,Existing task ID: SZS3UOOR67S7EQJZUL6OOMA7
+2003,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2003,EQI_func_2003,existing_task_running,30,EPSG:4326,unified_residual_model,False,Existing task ID: PWPXDDGLJXRZAIGWNUD3HFAP
+2004,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2004,EQI_func_2004,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: 4GMDINTYFSPYCOLZEIBSM3A4
+2005,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2005,EQI_func_2005,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: O3FWX7WLCQ7HZNLREP7IMJWR
+2006,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2006,EQI_func_2006,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: QNUHTWZFOVJY274JSLIZKVAJ
+2007,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2007,EQI_func_2007,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: INK4ADKOVDST6EPI7ITKRQIE
+2008,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2008,EQI_func_2008,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: EATDVJWQWCVRU2NYO3KFYZU5
+2009,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2009,EQI_func_2009,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: P7TT5FIYVGLPGYWPKCPOBHDL
+2010,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2010,EQI_func_2010,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: ITOWAY6VVOQSA6MJOKZEITZY
+2011,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2011,EQI_func_2011,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: OIE63UIV7LL6EQ33KK23II4O
+2012,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2012,EQI_func_2012,existing_task_ready,30,EPSG:4326,unified_residual_model,False,Existing task ID: BYC2N2MY6AHX5A5SDHEP63ZQ
+2013,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2013,EQI_func_2013,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: 2UJ3STEB7HMPR46JVBCMR2MG
+2014,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2014,EQI_func_2014,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: CF2PLQYW6WIFTDG6NRT72TG3
+2015,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2015,EQI_func_2015,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: JSFHLVRNFBCDV5447NEN5C4Q
+2016,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2016,EQI_func_2016,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: BFFVOQ7JMRFNDJDTEYNCZ3R6
+2017,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2017,EQI_func_2017,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: GUTOCAGKX7557O4XBNPXQMHG
+2018,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2018,EQI_func_2018,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: 6ZQA5SJINUI5ZN2JTWIUIUFM
+2019,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2019,EQI_func_2019,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: VAHI2Q5PVQHOIZSCS3XDQRVU
+2020,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2020,EQI_func_2020,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: FB6D6BEXRWI2WA27CKNXITEJ
+2021,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2021,EQI_func_2021,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: LREFVWNO4W6WOEKQJBONJMTJ
+2022,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2022,EQI_func_2022,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: VWD7USLHOROXUCK6BJVQ3PRB
+2023,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2023,EQI_func_2023,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: UVLIBHXTXUJQWOW6ILNMSKHP
+2024,users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2024,EQI_func_2024,submitted,30,EPSG:4326,unified_residual_model,False,Submitted task ID: PR4HN7RB45ABVEYS4RCAWDDG
