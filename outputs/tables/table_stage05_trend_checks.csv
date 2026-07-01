@@ -1,0 +1,8 @@
+check_item,result,value,notes
+FVC_SenSlope 是否存在正负值,pass,min=-0.04765588418; max=0.05502215773,Sen slope units: FVC/year.
+EQI_SenSlope 是否存在正负值,pass,min=-0.009519957006; max=0.01053539477,Sen slope units: EQI/year.
+FVC_pvalue 是否在 0—1,pass,min=1.659317128e-11; max=1,Two-sided normal-approximation p value from Kendall tau.
+EQI_pvalue 是否在 0—1,pass,min=6.176981149e-11; max=1,Two-sided normal-approximation p value from Kendall tau.
+FVC 有效森林像元面积,pass,24578.194088,"km2 from ee.Image.pixelArea(), not pixel-count approximation."
+EQI 有效森林像元面积,pass,23987.777560,"km2 from ee.Image.pixelArea(), not pixel-count approximation."
+趋势结果是否只覆盖森林区,pass,FVC_off=0; EQI_off=0,Sum of valid trend-mask pixels outside ForestMask_30m.

@@ -1,0 +1,5 @@
+asset_name,asset_id,variable,metric,export_description,export_status,scale,crs,notes
+FVC_SenSlope_30m,users/gyf/forest_csc_alphaearth/stage05_trend/FVC_SenSlope_30m,FVC,SenSlope,FVC_SenSlope_30m,completed,30,EPSG:4326,Completed task ID: EYQS5OXLEQFQIGUGP2EI7DNY
+FVC_pvalue_30m,users/gyf/forest_csc_alphaearth/stage05_trend/FVC_pvalue_30m,FVC,pvalue,FVC_pvalue_30m,completed,30,EPSG:4326,Completed corrected task ID: DMZGICS7WQWL22AIUSOMHCU5
+EQI_SenSlope_30m,users/gyf/forest_csc_alphaearth/stage05_trend/EQI_SenSlope_30m,EQI_func,SenSlope,EQI_SenSlope_30m,completed,30,EPSG:4326,Completed task ID: 6ANS2NH2V6WIWM42EGQGI2PQ
+EQI_pvalue_30m,users/gyf/forest_csc_alphaearth/stage05_trend/EQI_pvalue_30m,EQI_func,pvalue,EQI_pvalue_30m,completed,30,EPSG:4326,Completed corrected task ID: AJ2K6LE6ZZWRZKH2R5C2YPQJ
