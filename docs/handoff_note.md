@@ -3,193 +3,217 @@
 ## 1. Current Handoff
 
 - current_machine: DESKTOP-MP8LE18
-- handoff_time: 2026-06-26 10:55:56 +08:00
+- handoff_time: 2026-07-01 17:28:26 +08:00
 - operator: gyf
-- reason: continue Stage 4/5 workflow on another computer
+- reason: continue the workflow on another computer after Stage 5 completion
+- current_stage: Stage 5 completed
+- next_stage: Stage 6 decoupling analysis
+- explicit_pause: Stage 6 has not been executed
 
 ## 2. Git State
 
-- is_git_repo: yes
-- current_branch: main
-- remote_url: origin https://github.com/gyf-web/csc.git
-- latest_local_base_before_this_handoff: `c3726b1 Pause Stage 3 and prepare cross-machine handoff`
-- local_changes_to_commit: Stage 4 script, Stage 4 local outputs, `docs/progress_log.md`, and this handoff note
-- unrelated_local_untracked_files_not_to_commit:
-  - `Claude-项目文献对标与论文可行性评估.md`
-  - `literature_summary.md`
-  - `tools/`
+- repository: `https://github.com/gyf-web/csc.git`
+- branch: `main`
+- remote: `origin`
+- remote_main_before_handoff: `a9f4914 Complete Stage 4 EQI handoff`
+- local_stage05_commit_before_handoff_note: `8eead9c stage05`
+- local_status_before_handoff_note: `main` was one commit ahead of `origin/main`
+- intended_sync: commit this handoff-note update and push `main` to `origin`
+
+Important scope note:
+
+- Commit `8eead9c` contains all Stage 5 code and outputs.
+- It also contains the previously local literature files
+  `Claude-项目文献对标与论文可行性评估.md`,
+  `literature_summary.md`, and three scripts under `tools/`.
+- Those additional files were already part of the existing local commit before
+  this handoff update. They were not added or modified by the Stage 5 handoff
+  operation.
 
 ## 3. Project Progress
 
-- completed_stages: Stage 0, Stage 1, Stage 2, Stage 3, Stage 4 local workflow and export submission
-- current_stage: Stage 4
-- current_stage_status: local Stage 4 outputs complete; GEE EQI_func exports submitted/queued
-- next_stage: Stage 5
-- blocked_by: Stage 4 GEE Asset export tasks not fully completed
-- do_not_run_next_stage_until:
-  - `users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2000` through `EQI_func_2024` all exist as IMAGE assets
-  - `outputs/tables/table_annual_eqi_stats.csv` is present and complete
-  - `outputs/tables/table_stage04_eqi_asset_manifest.csv` is present and reviewed
+- completed_stages: Stage 0, Stage 1, Stage 2, Stage 3, Stage 4, Stage 5
+- Stage 4 status: complete; all `EQI_func_2000` through `EQI_func_2024`
+  assets exist as Earth Engine IMAGE assets
+- Stage 5 status: complete
+- blocked_by: none
+- next_authorized_action: none; do not run Stage 6 unless the user explicitly
+  requests it on the next computer
 
-## 4. Stage 4 Model Summary
+Stage 5 used:
 
-- model: `NIRv ~ FVC + DEM + Slope + Precip + Temp`
-- model_type: `unified_residual_model`
-- simplified_model: false
-- ForestType_in_model: false
-- sample_design: stratified by ForestType, 10,000 natural forest pixels and 10,000 plantation forest pixels per year
-- sample_years: 2000-2024
-- cleaned_sample_rows: 500,000
-- DEM_source: `USGS/SRTMGL1_003`
-- Slope_source: derived from DEM in Earth Engine
-- climate_source: `ECMWF/ERA5_LAND/MONTHLY_AGGR`
-- precip_units: annual meters from monthly `total_precipitation_sum`
-- temp_units: degree C from monthly mean `temperature_2m`
+- period: 2000-2024
+- resolution: 30 m
+- study mask: `ForestMask_30m`
+- main trend estimator: per-pixel Sen's slope
+- significance test: Kendall tau followed by a two-sided asymptotic
+  Mann-Kendall normal-approximation p value
+- significance threshold: `p < 0.05`
 
-Model diagnostics:
+## 4. Stage 5 Earth Engine Assets
 
-| metric | value |
-|---|---:|
-| R2 | 0.77283639 |
-| RMSE | 0.03034619 |
-| MAE | 0.02316444 |
-| Bias | 0.0 |
-| sample_count | 500000 |
+All four target exports completed successfully and exist as IMAGE assets:
 
-Coefficients:
+| asset_name | asset_id | band | status |
+|---|---|---|---|
+| FVC_SenSlope_30m | `users/gyf/forest_csc_alphaearth/stage05_trend/FVC_SenSlope_30m` | `FVC_SenSlope` | IMAGE / COMPLETED |
+| FVC_pvalue_30m | `users/gyf/forest_csc_alphaearth/stage05_trend/FVC_pvalue_30m` | `FVC_pvalue` | IMAGE / COMPLETED |
+| EQI_SenSlope_30m | `users/gyf/forest_csc_alphaearth/stage05_trend/EQI_SenSlope_30m` | `EQI_SenSlope` | IMAGE / COMPLETED |
+| EQI_pvalue_30m | `users/gyf/forest_csc_alphaearth/stage05_trend/EQI_pvalue_30m` | `EQI_pvalue` | IMAGE / COMPLETED |
 
-| term | coefficient |
-|---|---:|
-| Intercept | 0.09412783499 |
-| FVC | 0.207347648675 |
-| DEM | -0.000056633975 |
-| Slope | -0.000071600707 |
-| Precip | -0.001811573899 |
-| Temp | 0.000186252721 |
+Final successful task IDs:
 
-## 5. Stage 4 GEE Task Status
-
-Latest check time: 2026-06-26 10:55 +08:00
-
-Summary:
-
-| state | count |
-|---|---:|
-| COMPLETED | 1 |
-| RUNNING | 3 |
-| READY | 21 |
-| FAILED | 0 |
-
-Asset summary:
-
-| asset_type | count |
-|---|---:|
-| IMAGE | 1 |
-| missing_or_not_yet_available | 24 |
-
-Completed / available as IMAGE:
-
-| year | asset_id | status |
-|---|---|---|
-| 2000 | `users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2000` | IMAGE / COMPLETED |
-
-Running tasks:
-
-| year | asset_id | task_state |
-|---|---|---|
-| 2001 | `users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2001` | RUNNING |
-| 2002 | `users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2002` | RUNNING |
-| 2003 | `users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2003` | RUNNING |
-
-Ready / queued tasks:
-
-| years | task_state |
+| asset_name | task_id |
 |---|---|
-| 2004-2024 | READY |
+| FVC_SenSlope_30m | `EYQS5OXLEQFQIGUGP2EI7DNY` |
+| FVC_pvalue_30m | `DMZGICS7WQWL22AIUSOMHCU5` |
+| EQI_SenSlope_30m | `6ANS2NH2V6WIWM42EGQGI2PQ` |
+| EQI_pvalue_30m | `AJ2K6LE6ZZWRZKH2R5C2YPQJ` |
 
-Failed tasks:
+All final assets have:
 
-- none found in the latest check
+- CRS: `EPSG:4326`
+- scale property: 30
+- start year: 2000
+- end year: 2024
+- project property: `hainan_forest_greening_quality`
 
-## 6. Stage 4 Local Outputs
+Exported p-value ranges:
 
-| file_path | exists | notes |
+| asset | minimum | maximum |
+|---|---:|---:|
+| FVC_pvalue_30m | 1.659317128e-11 | 1.0 |
+| EQI_pvalue_30m | 6.176981149e-11 | 1.0 |
+
+## 5. Stage 5 Method Correction
+
+Earth Engine's direct `p-value` output from
+`ee.Reducer.kendallsCorrelation(2)` was masked/NaN for these annual image
+series. The two initial invalid p-value export tasks were cancelled before
+creating assets:
+
+| description | cancelled_task_id | final_state |
 |---|---|---|
-| `gee/stage04_build_eqi_model.py` | yes | Stage 4 runnable Python Earth Engine workflow |
-| `outputs/stage04_eqi/EQI_regression_samples.csv` | yes | 500,000 cleaned sample rows |
-| `outputs/tables/table_eqi_regression_coefficients.csv` | yes | 6 model terms |
-| `outputs/tables/table_eqi_regression_diagnostics.csv` | yes | R2/RMSE/MAE/Bias/sample_count |
-| `outputs/tables/table_annual_eqi_stats.csv` | yes | 75 rows: 25 years x 3 forest groups |
-| `outputs/tables/table_stage04_eqi_asset_manifest.csv` | yes | 25 EQI_func target assets/tasks |
-| `outputs/figures/fig03_eqi_timeseries_by_forest_type.png` | yes | EQI_func time series by forest type |
-| `docs/progress_log.md` | yes | Stage 4 appended |
+| FVC_pvalue_30m | `XXCGPVWRTFZWMF54ICXK6DDE` | CANCELLED |
+| EQI_pvalue_30m | `LSWQWNWDD7MLFERFSZBA6I3C` | CANCELLED |
 
-Local GeoTIFF check:
+The final p-value assets use the Stage 5 option-B method allowed by
+`AGENTS.md`: Kendall tau plus a two-sided asymptotic normal approximation.
+Values are clamped to 0-1 and require at least three valid annual observations.
+The approximation does not implement an explicit per-pixel tie correction;
+retain this limitation in downstream interpretation and robustness analysis.
 
-- `outputs/` contains no `.tif` or `.tiff` files from Stage 4.
+## 6. Stage 5 Local Outputs
 
-## 7. Files To Commit For This Handoff
+| file_path | status | notes |
+|---|---|---|
+| `gee/stage05_trend_analysis.py` | complete | Runnable Python Earth Engine Stage 5 workflow |
+| `src/trend_utils.py` | complete | Time-series, Sen slope, and p-value helpers |
+| `src/io_utils.py` | complete | YAML and CSV helpers |
+| `outputs/tables/table_trend_stats_by_forest_type.csv` | complete | Three forest groups |
+| `outputs/tables/table_stage05_trend_asset_manifest.csv` | complete | Four assets, all marked completed |
+| `outputs/tables/table_stage05_trend_checks.csv` | complete | Seven checks, all passed |
+| `outputs/figures/fig04_fvc_trend_map.png` | complete | Visually inspected |
+| `outputs/figures/fig05_eqi_trend_map.png` | complete | Visually inspected |
+| `docs/progress_log.md` | complete | Stage 5 completion entry appended |
 
-Commit these:
+Key validation results:
 
-```text
-gee/stage04_build_eqi_model.py
-docs/progress_log.md
-docs/handoff_note.md
-outputs/stage04_eqi/EQI_regression_samples.csv
-outputs/tables/table_eqi_regression_coefficients.csv
-outputs/tables/table_eqi_regression_diagnostics.csv
-outputs/tables/table_annual_eqi_stats.csv
-outputs/tables/table_stage04_eqi_asset_manifest.csv
-outputs/figures/fig03_eqi_timeseries_by_forest_type.png
+- FVC slope range: -0.04765588418 to 0.05502215773 per year
+- EQI_func slope range: -0.009519957006 to 0.01053539477 per year
+- FVC valid trend area: 24,578.194088 km2
+- EQI_func valid trend area: 23,987.777560 km2
+- off-forest valid trend-mask sums: zero for both variables
+- local GeoTIFF files under `outputs/`: none
+- Stage 6 files or decoupling products generated: none
+
+## 7. Configuration Caveat
+
+`config/config.yaml` still has:
+
+```yaml
+gee_assets:
+  hainan_roi: projects/ee-gyf/assets/hainan
+  forest_type_asset: null
+  rubber_mask_asset: null
 ```
 
-Do not commit these local-only/unrelated files unless intentionally requested later:
+The configured Hainan ROI is not the corrected island-only boundary, and the
+Stage 1/3/4/5 asset roots are not stored in the config. Stage 5 therefore read
+years, scale, CRS, output paths, and the p-value threshold from the config but
+used explicit command-line overrides for:
 
 ```text
-Claude-项目文献对标与论文可行性评估.md
-literature_summary.md
-tools/
+projects/ee-gyf/assets/Hainan-Island-Boundary
+users/gyf/forest_csc_alphaearth/stage01_forest_type/ForestMask_30m
+users/gyf/forest_csc_alphaearth/stage01_forest_type/ForestType_30m_clean
+users/gyf/forest_csc_alphaearth/stage03_indices
+users/gyf/forest_csc_alphaearth/stage04_eqi
+users/gyf/forest_csc_alphaearth/stage05_trend
 ```
+
+Do not silently edit `config/config.yaml` as part of Stage 6. Configuration
+maintenance should be a separately authorized action or explicitly included in
+the next-stage request.
 
 ## 8. Recovery Steps On Another Computer
 
-1. Pull the latest GitHub repository state from `https://github.com/gyf-web/csc`.
-2. Read `AGENTS.md`, `docs/progress_log.md`, and this `docs/handoff_note.md`.
-3. Activate the project Python environment with Earth Engine access.
-4. Check Stage 4 task completion and Asset availability before Stage 5.
-5. Do not run Stage 5 until every target below exists as an IMAGE asset:
+1. Pull the latest `main` branch:
 
-```text
-users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2000
-...
-users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2024
-```
+   ```powershell
+   git pull origin main
+   ```
+
+2. Read:
+
+   ```text
+   AGENTS.md
+   docs/progress_log.md
+   docs/handoff_note.md
+   ```
+
+3. Activate the Earth Engine environment:
+
+   ```powershell
+   conda activate csc
+   ```
+
+   Known working interpreter on the source computer:
+
+   ```text
+   D:\anaconda\envs\csc\python.exe
+   ```
+
+4. Confirm Earth Engine access using Cloud Project `ee-gyf`.
+5. Before Stage 6, perform a read-only check that the four Stage 5 assets in
+   section 4 exist as IMAGE assets with the expected bands.
+6. Do not rerun Stage 5, resubmit its exports, download full-resolution
+   GeoTIFFs, or generate Stage 6 outputs unless explicitly requested.
 
 ## 9. Suggested Next Codex Prompt
 
 ```text
-Please do not execute any new analysis stage yet.
-
 Read:
 1. AGENTS.md
 2. docs/progress_log.md
 3. docs/handoff_note.md
 
-The project is paused after Stage 4. Stage 4 local outputs are complete, and
-EQI_func_2000-2024 export tasks have been submitted to Earth Engine, but the
-handoff check found only EQI_func_2000 available as an IMAGE asset; years
-2001-2003 were RUNNING and 2004-2024 were READY.
+The project is paused after successful completion of Stage 5.
 
-First check:
-1. whether all Stage 4 GEE tasks completed successfully;
-2. whether users/gyf/forest_csc_alphaearth/stage04_eqi/EQI_func_2000 through
-   EQI_func_2024 all exist as IMAGE assets;
-3. whether outputs/tables/table_annual_eqi_stats.csv is complete;
-4. whether outputs/tables/table_stage04_eqi_asset_manifest.csv is complete.
+First perform read-only checks:
+1. confirm these four Earth Engine assets exist as IMAGE assets:
+   - users/gyf/forest_csc_alphaearth/stage05_trend/FVC_SenSlope_30m
+   - users/gyf/forest_csc_alphaearth/stage05_trend/FVC_pvalue_30m
+   - users/gyf/forest_csc_alphaearth/stage05_trend/EQI_SenSlope_30m
+   - users/gyf/forest_csc_alphaearth/stage05_trend/EQI_pvalue_30m
+2. confirm their expected bands, EPSG:4326 metadata, 30 m scale property, and
+   p-value ranges within 0-1;
+3. confirm the three Stage 5 tables and two Stage 5 figures are present;
+4. confirm outputs/ contains no local GeoTIFF.
 
-If Stage 4 is not fully complete, only list missing years, missing EQI_func
-assets, and failed tasks. Do not execute Stage 5.
+Do not rerun Stage 5 and do not execute Stage 6 yet.
 
-If Stage 4 is fully complete, suggest the next Codex command for Stage 5.
+If all checks pass, report that Stage 5 is ready for Stage 6 and provide the
+next Codex prompt for Stage 6. If anything is missing, list only the missing or
+failed items.
 ```
